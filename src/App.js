@@ -1,4 +1,13 @@
-export default function App() {}
+export default function App() {
+  return (
+    <div className="container">
+      <Header />
+      <Form />
+      <List />
+      <Footer />
+    </div>
+  );
+}
 
 function Header() {
   return <h1>Travel Packing List</h1>;
