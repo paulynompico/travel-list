@@ -1,3 +1,5 @@
+import Header from "./Header";
+
 export default function App() {
   return (
     <div className="container">
@@ -7,10 +9,6 @@ export default function App() {
       <Footer />
     </div>
   );
-}
-
-function Header() {
-  return <h1>Travel Packing List</h1>;
 }
 
 function Form() {
