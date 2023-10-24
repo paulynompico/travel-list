@@ -1,4 +1,7 @@
 import Header from "./Header";
+import Form from "./Footer";
+import List from "./List";
+import Footer from "./Footer";
 
 export default function App() {
   return (
@@ -8,25 +11,5 @@ export default function App() {
       <List />
       <Footer />
     </div>
-  );
-}
-
-function Form() {
-  return (
-    <div className="add-form">
-      <h3>What do you need to bring on your trip?</h3>
-    </div>
-  );
-}
-
-function List() {
-  return <div className="list">LIST</div>;
-}
-
-function Footer() {
-  return (
-    <footer className="stats">
-      <em>You have x items on your list and you have packed x%</em>
-    </footer>
   );
 }
