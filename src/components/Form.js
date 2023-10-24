@@ -1,7 +1,12 @@
-export default function Form() {
+import { useState } from "react";
+
+export default function Form({ onAddItems }) {
+  const [description, setDescription] = useState("");
+  const [quantity, setQuantity] = useState(1);
+
   return (
-    <div className="add-form">
+    <form className="add-form">
       <h3>What do you need to bring on your trip?</h3>
-    </div>
+    </form>
   );
 }
