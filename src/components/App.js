@@ -1,14 +1,14 @@
 import { useState } from "react";
 import Header from "./Header";
-import Form from "./Footer";
+// import Form from "./Footer";
 // import List from "./List";
 import Footer from "./Footer";
 
 const testItems = [
-  { id: 1, description: "Passports", quantity: 2 },
-  { id: 2, description: "Residence card", quantity: 2 },
-  { id: 3, description: "Wallet", quantity: 2 },
-  { id: 4, description: "Hedi's underwear", quantity: 3 },
+  { id: 1, description: "Passports", quantity: 2, packed: true },
+  { id: 2, description: "Residence cards", quantity: 2, packed: false },
+  { id: 3, description: "Wallets", quantity: 2, packed: false },
+  { id: 4, description: "Hedi's pantsu", quantity: 3, packed: false },
 ];
 
 export default function App() {
@@ -21,10 +21,26 @@ export default function App() {
   return (
     <div className="app">
       <Header />
-      <Form onAddItems={handleAddItems} />
+      {/* <Form onAddItems={handleAddItems} /> */}
+      <Form />
       <List />
       <Footer />
     </div>
+  );
+}
+
+function Form() {
+  return (
+    <form className="add-form">
+      <h3>What do you need to bring on your trip?</h3>
+      <select>
+        <option value={1}>1</option>
+        <option value={2}>2</option>
+        <option value={3}>3</option>
+      </select>
+      <input type="text" placeholder="Item..."></input>
+      <button>Add</button>
+    </form>
   );
 }
 
@@ -41,5 +57,12 @@ function List() {
 }
 
 function Item({ item }) {
-  return <li>{item.description}</li>;
+  return (
+    <li>
+      <span>
+        {item.quantity} {item.description}
+      </span>
+      <button>❌</button>
+    </li>
+  );
 }
