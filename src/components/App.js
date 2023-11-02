@@ -16,41 +16,61 @@ export default function App() {
 
   function handleAddItems(item) {
     setItems((items) => [...items, item]);
+    console.log(items);
   }
 
   return (
     <div className="app">
       <Header />
-      {/* <Form onAddItems={handleAddItems} /> */}
-      <Form />
-      <List />
+      <Form onAddItems={handleAddItems} />
+      <List items={items} />
       <Footer />
     </div>
   );
 }
 
-function Form() {
+function Form({ onAddItems }) {
+  const [description, setDescription] = useState("");
+  const [quantity, setQuantity] = useState(1);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (!description) return; //safeguard in case no item in input
+    const newItem = { description, quantity, packed: false, id: Date.now() };
+    onAddItems(newItem);
+    setDescription("");
+    setQuantity(1);
+  }
+
   return (
-    <form className="add-form">
+    <form className="add-form" onSubmit={handleSubmit}>
       <h3>What do you need to bring on your trip?</h3>
-      <select>
+      <select
+        value={quantity}
+        onChange={(e) => setQuantity(Number(e.target.value))}
+      >
         {Array.from({ length: 10 }, (_, i) => i + 1).map((num) => (
           <option value={num} key={num}>
             {num}
           </option>
         ))}
       </select>
-      <input type="text" placeholder="Item..."></input>
-      <button>Add</button>
+      <input
+        type="text"
+        placeholder="Item..."
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+      />
+      <button className="submit">Add</button>
     </form>
   );
 }
 
-function List() {
+function List({ items }) {
   return (
     <div className="list">
       <ul>
-        {testItems.map((item) => (
+        {items.map((item) => (
           <Item item={item} key={item.id} />
         ))}
       </ul>
