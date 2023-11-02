@@ -20,7 +20,7 @@ export default function App() {
       <Header />
       <Form onAddItems={handleAddItems} />
       <List items={items} onDeleteItem={handleDeleteItem} />
-      <Footer />
+      <Footer items={items} />
     </div>
   );
 }
