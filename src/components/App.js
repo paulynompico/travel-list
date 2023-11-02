@@ -34,9 +34,11 @@ function Form() {
     <form className="add-form">
       <h3>What do you need to bring on your trip?</h3>
       <select>
-        <option value={1}>1</option>
-        <option value={2}>2</option>
-        <option value={3}>3</option>
+        {Array.from({ length: 10 }, (_, i) => i + 1).map((num) => (
+          <option value={num} key={num}>
+            {num}
+          </option>
+        ))}
       </select>
       <input type="text" placeholder="Item..."></input>
       <button>Add</button>
@@ -49,7 +51,7 @@ function List() {
     <div className="list">
       <ul>
         {testItems.map((item) => (
-          <Item item={item} />
+          <Item item={item} key={item.id} />
         ))}
       </ul>
     </div>
