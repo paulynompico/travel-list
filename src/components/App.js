@@ -15,11 +15,23 @@ export default function App() {
     setItems((items) => items.filter((item) => item.id !== id));
   }
 
+  function handleMarkPacked(id) {
+    setItems((items) =>
+      items.map((item) =>
+        item.id === id ? { ...item, packed: !item.packed } : item
+      )
+    );
+  }
+
   return (
     <div className="app">
       <Header />
       <Form onAddItems={handleAddItems} />
-      <List items={items} onDeleteItem={handleDeleteItem} />
+      <List
+        items={items}
+        onDeleteItem={handleDeleteItem}
+        onMarkPacked={handleMarkPacked}
+      />
       <Footer items={items} />
     </div>
   );

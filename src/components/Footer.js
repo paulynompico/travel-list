@@ -7,7 +7,7 @@ export default function Footer({ items }) {
       <em>
         You have {items.length} {items.length === 1 ? "item" : "items"} on your
         list and you have packed{" "}
-        {100 * (handlePacked(items) / items.length) || 0}%
+        {Math.round(100 * (handlePacked(items) / items.length)) || 0}%
       </em>
     </footer>
   );
